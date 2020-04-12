@@ -1,0 +1,65 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gestionPlateauApp.equipe.home.title">Equipes</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-equipe" [routerLink]="['/equipe/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gestionPlateauApp.equipe.home.createLabel">
+            Create a new Equipe
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="equipes?.length === 0">
+        <span jhiTranslate="gestionPlateauApp.equipe.home.notFound">No equipes found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="equipes?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionPlateauApp.equipe.nom">Nom</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionPlateauApp.equipe.nbrJoueurs">Nbr Joueurs</span></th>
+                    <th scope="col" ><span jhiTranslate="gestionPlateauApp.equipe.groupe">Groupe</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let equipe of equipes ;trackBy: trackId">
+                    <td><a [routerLink]="['/equipe', equipe.id, 'view']">{{ equipe.id }}</a></td>
+                    <td>{{ equipe.nom }}</td>
+                    <td>{{ equipe.nbrJoueurs }}</td>
+                    <td jhiTranslate="{{ 'gestionPlateauApp.Groupe.' + equipe.groupe }}">{{ equipe.groupe }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/equipe', equipe.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/equipe', equipe.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(equipe)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

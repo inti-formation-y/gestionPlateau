@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="categorie">
+            <h2><span jhiTranslate="gestionPlateauApp.categorie.detail.title">Categorie</span> {{ categorie.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionPlateauApp.categorie.section">Section</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'gestionPlateauApp.Section.' + categorie.section }}">{{ categorie.section }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionPlateauApp.categorie.descrition">Descrition</span></dt>
+                <dd>
+                    <span>{{ categorie.descrition }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionPlateauApp.categorie.club">Club</span></dt>
+                <dd>
+                    <div *ngIf="categorie.club">
+                        <a [routerLink]="['/club', categorie.club?.id, 'view']">{{ categorie.club?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gestionPlateauApp.categorie.referent">Referent</span></dt>
+                <dd>
+                    <div *ngIf="categorie.referent">
+                        <a [routerLink]="['/referent', categorie.referent?.id, 'view']">{{ categorie.referent?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/categorie', categorie.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

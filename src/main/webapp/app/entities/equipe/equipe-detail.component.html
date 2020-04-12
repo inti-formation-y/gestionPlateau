@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="equipe">
+            <h2><span jhiTranslate="gestionPlateauApp.equipe.detail.title">Equipe</span> {{ equipe.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gestionPlateauApp.equipe.nom">Nom</span></dt>
+                <dd>
+                    <span>{{ equipe.nom }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionPlateauApp.equipe.nbrJoueurs">Nbr Joueurs</span></dt>
+                <dd>
+                    <span>{{ equipe.nbrJoueurs }}</span>
+                </dd>
+                <dt><span jhiTranslate="gestionPlateauApp.equipe.groupe">Groupe</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'gestionPlateauApp.Groupe.' + equipe.groupe }}">{{ equipe.groupe }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/equipe', equipe.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

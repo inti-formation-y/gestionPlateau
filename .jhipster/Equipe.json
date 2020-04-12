@@ -1,0 +1,30 @@
+{
+    "name": "Equipe",
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nbrJoueurs",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "groupe",
+            "fieldType": "Groupe",
+            "fieldValues": "A,B,C"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20200411230100",
+    "entityTableName": "equipe",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "readOnly": false,
+    "embedded": false,
+    "clientRootFolder": "",
+    "applications": "*"
+}
